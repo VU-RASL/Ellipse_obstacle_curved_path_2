@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,7 +214,7 @@ Transform:
   m_GameObject: {fileID: 308172853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 3, z: 1.5}
+  m_LocalScale: {x: 0.5, y: 3, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -389,10 +389,12 @@ MonoBehaviour:
   midline: {fileID: 0}
   startMark: {fileID: 308172853}
   endMark: {fileID: 2076192089}
+  radius: 0
   remoteinitialaxis: 0
   initaxiscount: 0
   instart: 0
   outstart: 0
+  alltrialsdone: 0
 --- !u!4 &746649881
 Transform:
   m_ObjectHideFlags: 0
@@ -614,10 +616,12 @@ MonoBehaviour:
   midline: {fileID: 1621109715}
   startMark: {fileID: 2076192089}
   endMark: {fileID: 308172853}
+  radius: 3
   remoteinitialaxis: 0
   initaxiscount: 0
   instart: 0
   outstart: 0
+  alltrialsdone: 0
 --- !u!114 &1315241088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,7 +653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1367616054
 Light:
   m_ObjectHideFlags: 0
@@ -912,8 +916,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483350407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0, z: 7.5}
-  m_LocalScale: {x: 8, y: 0.1, z: 10}
+  m_LocalPosition: {x: 15, y: -2.5, z: 7.5}
+  m_LocalScale: {x: 8, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1008,7 +1012,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621109715}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2.5, z: 0}
   m_LocalScale: {x: 0.1, y: 30, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1043,7 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d9acc7968244a8886f3af591305bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeProfile: {fileID: 11400000, guid: 31a611a779d3499e8e35f1a2018ca841, type: 2}
+  activeProfile: {fileID: 11400000, guid: 169b712628856c44fb7f3229e63fe168, type: 2}
 --- !u!4 &1981206960
 Transform:
   m_ObjectHideFlags: 0
@@ -1149,7 +1153,7 @@ Transform:
   m_GameObject: {fileID: 2076192089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1.5, y: 3, z: 1.5}
+  m_LocalScale: {x: 0.5, y: 3, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6

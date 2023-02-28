@@ -19,13 +19,16 @@ public class UserPosRecord : MonoBehaviour
     Collider end_Collider;
     private Quaternion startRot;
     int count;
-    float radius;
+    public float radius;
     private List<PositionEntry> entries = new List<PositionEntry>();
     // Start is called before the first frame update
 
-    float[] xpositions = { 7.5f, 7.5f, 5.0f, 5.0f, -7.5f, -7.5f, -5.0f, -5.0f };
-    float[] zpositions = { 7.5f, 2.5f, -2.5f, -7.5f, 7.5f, 2.5f, -2.5f, -7.5f };
-    float[] obstaclescales = { 8.0f, 6.0f, 4.0f, 2.0f, 8.0f, 6.0f, 4.0f, 2.0f };
+    //float[] xpositions = { 7.5f, 7.5f, 5.0f, 5.0f, -7.5f, -7.5f, -5.0f, -5.0f };
+    //float[] zpositions = { 7.5f, 2.5f, -2.5f, -7.5f, 7.5f, 2.5f, -2.5f, -7.5f };
+   float[] xpositions = { 0.75f, 0.75f, 0.50f, 0.50f, -0.75f, -0.75f, -0.50f, -0.50f };
+   float[] zpositions = { 0.75f, 0.25f, -0.25f, -0.75f, 0.75f, 0.25f, -0.25f, -0.75f };
+    //float[] obstaclescales = { 8.0f, 6.0f, 4.0f, 2.0f, 8.0f, 6.0f, 4.0f, 2.0f };
+    float[] obstaclescales = { .80f, 0.60f, 0.40f, 0.20f, 0.80f, 0.60f, 0.40f, 0.20f };
     float[] endpositions = { 117.5f, 135.0f, 152.5f, 170.0f, 242.5f, 225.0f, 207.5f,190.0f };
     float[] startpositions = { 10.0f, 10.0f, 10.0f, 10.0f, 350.0f, 350.0f, 350.0f, 350.0f };
     // test case for random start and end positions 
@@ -56,7 +59,6 @@ public class UserPosRecord : MonoBehaviour
     void Start()
     {
         count = 0;
-        radius = 13.0f;
         initaxiscount = 0;
         remoteinitialaxis = remoteinitialaxes[initaxiscount];
         start_Collider = startMark.GetComponent<Collider>();
@@ -66,8 +68,8 @@ public class UserPosRecord : MonoBehaviour
         alltrialsdone = false;
 
 
-        xposition = xpositions[count];
-        zposition = zpositions[count];
+        xposition = xpositions[count] * radius;
+        zposition = zpositions[count] * radius;
 
         xstart = Mathf.Sin(startpositions[count] * Mathf.Deg2Rad) * radius;
         zstart = Mathf.Cos(startpositions[count] * Mathf.Deg2Rad) * radius;
@@ -93,7 +95,8 @@ public class UserPosRecord : MonoBehaviour
         obstaclescale = obstaclescales[count];
         obstacle.transform.position = new Vector3(xposition_shift, 0.0f, zposition_shift);
         obstacle.transform.rotation = Quaternion.Euler(0.0f, remoteinitialaxis, 0.0f);
-        obstacle.transform.localScale = new Vector3(obstaclescale, 0.1f, 10.0f);
+        //obstacle.transform.localScale = new Vector3(obstaclescale, 0.1f, 10.0f);
+        obstacle.transform.localScale = new Vector3(obstaclescale*radius, 0.1f, radius);
 
 
         //this.gameObject.transform.position = new Vector3(x, 0.0f, z);
@@ -186,7 +189,7 @@ public class UserPosRecord : MonoBehaviour
                 string filename = "PositionRecording_entry_angle_" + startpositions[count].ToString() + "_exit_angle_" + endpositions[count].ToString() + "_initial_angle_" + remoteinitialaxis.ToString() + "_" + this.name + "_";
 
                 //string path = Application.persistentDataPath + "/pathOfDevice";
-                string path = @"C:\Users\ullala\Documents\GitHub\Ellipse_obstacle_curved_path\Assets\savedData";
+                string path = @"C:\Users\ullala\Documents\GitHub\Ellipse_obstacle_curved_path_2\Assets\savedData";
 
                 Directory.CreateDirectory(path);
 
@@ -236,8 +239,8 @@ public class UserPosRecord : MonoBehaviour
         }
             
                     remoteinitialaxis = remoteinitialaxes[initaxiscount];
-                    xposition = xpositions[count];
-                    zposition = zpositions[count];
+                    xposition = xpositions[count] * radius;
+                    zposition = zpositions[count] * radius;
 
                     xstart = Mathf.Sin(startpositions[count] * Mathf.Deg2Rad) * radius;
                     zstart = Mathf.Cos(startpositions[count] * Mathf.Deg2Rad) * radius;
@@ -263,11 +266,12 @@ public class UserPosRecord : MonoBehaviour
                     obstaclescale = obstaclescales[count];
                     obstacle.transform.position = new Vector3(xposition_shift, 0.0f, zposition_shift);
                     obstacle.transform.rotation = Quaternion.Euler(0.0f, remoteinitialaxis, 0.0f);
-                    obstacle.transform.localScale = new Vector3(obstaclescale, 0.1f, 10.0f);
+                //obstacle.transform.localScale = new Vector3(obstaclescale, 0.1f, 10.0f);
+                obstacle.transform.localScale = new Vector3(obstaclescale * radius, 0.1f, radius);
 
 
-                    //this.gameObject.transform.position = new Vector3(x, 0.0f, z);
-                    startMark.transform.position = new Vector3(xstart_shift, 0, zstart_shift);
+                //this.gameObject.transform.position = new Vector3(x, 0.0f, z);
+                startMark.transform.position = new Vector3(xstart_shift, 0, zstart_shift);
                     endMark.transform.position = new Vector3(xend_shift, 0, zend_shift);
                // }
                 
