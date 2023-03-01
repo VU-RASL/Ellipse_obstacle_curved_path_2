@@ -18,7 +18,7 @@ public class curvePlayBack : MonoBehaviour
     private Quaternion startRot;
     private List<PositionEntry> entries = new List<PositionEntry>();
 
-    private string trajectoryFilePath = @"C:\Users\ullala\Documents\GitHub\Ellipse_obstacle_curved_path\Assets\savedData\PositionRecording_entry_angle_10_exit_angle_135_initial_angle_0_Main Camera_1.json";
+    private string trajectoryFilePath = @"C:\Users\ullala\Documents\GitHub\Ellipse_obstacle_curved_path_2\Assets\savedData\PositionRecording_entry_angle_10_exit_angle_117.5_initial_angle_0_Main Camera_1.json";
     [Tooltip("Leave empty for the trajectory's default movement")]
     public GameObject targetEndPoint;
 
