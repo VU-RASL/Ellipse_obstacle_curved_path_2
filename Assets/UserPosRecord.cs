@@ -267,7 +267,7 @@ public class UserPosRecord : MonoBehaviour
                     obstacle.transform.position = new Vector3(xposition_shift, 0.0f, zposition_shift);
                     obstacle.transform.rotation = Quaternion.Euler(0.0f, remoteinitialaxis, 0.0f);
                 //obstacle.transform.localScale = new Vector3(obstaclescale, 0.1f, 10.0f);
-                obstacle.transform.localScale = new Vector3(obstaclescale * radius, 0.1f, radius);
+                obstacle.transform.localScale = new Vector3(obstaclescale * radius, 0.5f, radius);
 
 
                 //this.gameObject.transform.position = new Vector3(x, 0.0f, z);
