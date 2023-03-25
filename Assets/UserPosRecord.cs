@@ -53,6 +53,7 @@ public class UserPosRecord : MonoBehaviour
     public bool instart;
     public bool outstart;
     public bool alltrialsdone;
+    public int id;
 
 
 
@@ -93,10 +94,10 @@ public class UserPosRecord : MonoBehaviour
 
         // These are the positions when remoteinitialaxis = 0.0f
         obstaclescale = obstaclescales[count];
-        obstacle.transform.position = new Vector3(xposition_shift, 0.0f, zposition_shift);
+        obstacle.transform.position = new Vector3(xposition_shift, -1.2f, zposition_shift);
         obstacle.transform.rotation = Quaternion.Euler(0.0f, remoteinitialaxis, 0.0f);
         //obstacle.transform.localScale = new Vector3(obstaclescale, 0.1f, 10.0f);
-        obstacle.transform.localScale = new Vector3(obstaclescale*radius, 0.1f, radius);
+        obstacle.transform.localScale = new Vector3(obstaclescale*radius, 0.5f, radius);
 
 
         //this.gameObject.transform.position = new Vector3(x, 0.0f, z);
@@ -186,22 +187,29 @@ public class UserPosRecord : MonoBehaviour
                 // stop recording
                 isRecording = false;
                 //save to file
-                string filename = "PositionRecording_entry_angle_" + startpositions[count].ToString() + "_exit_angle_" + endpositions[count].ToString() + "_initial_angle_" + remoteinitialaxis.ToString() + "_" + this.name + "_";
+                string filename = "p_" + id + "_PositionRecording_entry_angle_" + startpositions[count].ToString() + "_exit_angle_" + endpositions[count].ToString() + "_initial_angle_" + remoteinitialaxis.ToString() + "_" + this.name + "_";
 
                 //string path = Application.persistentDataPath + "/pathOfDevice";
-                string path = @"C:\Users\ullala\Documents\GitHub\Ellipse_obstacle_curved_path_2\Assets\savedData";
-
-                Directory.CreateDirectory(path);
-
+                string path = @"C:\Users\ullala\Desktop\ellipse_test_paths\curve_task_paths";
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                string participant_path = @"C:\Users\ullala\Desktop\ellipse_test_paths\curve_task_paths\" + "p_" + id + "/" + "path";
+                if (!Directory.Exists(participant_path))
+                {
+                    Directory.CreateDirectory(participant_path);
+                }
+                
                 int inc = 1;
 
-                while (File.Exists(path + "/" + filename + inc.ToString() + ".json"))
+                while (File.Exists(participant_path + "/" + filename + inc.ToString() + ".json"))
                 {
                     inc++;
                     Debug.Log("exists");
                 }
 
-                string filepath = path + "/" + filename + inc.ToString() + ".json";
+                string filepath = participant_path + "/" + filename + inc.ToString() + ".json";
 
                 File.WriteAllText(filepath, JsonConvert.SerializeObject(entries, Formatting.None,
                     new JsonSerializerSettings()
@@ -264,10 +272,10 @@ public class UserPosRecord : MonoBehaviour
 
                     // These are the positions when remoteinitialaxis = 0.0f
                     obstaclescale = obstaclescales[count];
-                    obstacle.transform.position = new Vector3(xposition_shift, 0.0f, zposition_shift);
+                    obstacle.transform.position = new Vector3(xposition_shift, -1.2f, zposition_shift);
                     obstacle.transform.rotation = Quaternion.Euler(0.0f, remoteinitialaxis, 0.0f);
                 //obstacle.transform.localScale = new Vector3(obstaclescale, 0.1f, 10.0f);
-                obstacle.transform.localScale = new Vector3(obstaclescale * radius, 0.1f, radius);
+                obstacle.transform.localScale = new Vector3(obstaclescale * radius, 0.5f, radius);
 
 
                 //this.gameObject.transform.position = new Vector3(x, 0.0f, z);
